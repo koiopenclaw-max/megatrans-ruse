@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Автоморга Мегатранс — Русе | Авточасти втора употреба</title>
+    <meta name="description" content="Автоморга Мегатранс Русе — авточасти втора употреба, изкупуване на автомобили за скрап, продажба. Тел: 0878 101 801">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: #FFF;
+            background: #1A1A1A;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; height: auto; display: block; }
+        ul { list-style: none; }
+
+        /* ===== UTILITY ===== */
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+        .section-title {
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 0.5em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .section-title span { color: #F0A500; }
+        .section-subtitle {
+            text-align: center;
+            color: #AAA;
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+        }
+        .accent { color: #F0A500; }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5em;
+            padding: 0.9em 2.2em;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        .btn-primary {
+            background: #F0A500;
+            color: #1A1A1A;
+        }
+        .btn-primary:hover {
+            background: #FFB800;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(240,165,0,0.35);
+        }
+        .btn-outline {
+            background: transparent;
+            color: #FFF;
+            border: 2px solid #F0A500;
+        }
+        .btn-outline:hover {
+            background: #F0A500;
+            color: #1A1A1A;
+        }
+
+        /* ===== FADE-IN ANIMATIONS ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.4s ease;
+            background: transparent;
+        }
+        .header.scrolled {
+            background: rgba(20, 20, 20, 0.97);
+            backdrop-filter: blur(12px);
+            padding: 0.6rem 0;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+        }
+        .header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6em;
+            z-index: 1001;
+        }
+        .logo img {
+            height: 48px;
+            width: auto;
+            transition: height 0.3s ease;
+        }
+        .header.scrolled .logo img { height: 38px; }
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.15rem;
+            color: #FFF;
+            line-height: 1.1;
+        }
+        .logo-text small {
+            display: block;
+            font-weight: 600;
+            font-size: 0.65rem;
+            color: #F0A500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2em;
+        }
+        .nav-links a {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #FFF;
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #F0A500;
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover { color: #F0A500; }
+        .nav-links a:hover::after { width: 100%; }
+        .header-phone {
+            display: flex;
+            align-items: center;
+            gap: 0.4em;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: #F0A500;
+            transition: color 0.3s;
+        }
+        .header-phone:hover { color: #FFB800; }
+        .header-phone svg { width: 18px; height: 18px; }
+
+        /* Burger menu */
+        .burger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+        .burger span {
+            display: block;
+            width: 26px;
+            height: 2.5px;
+            background: #FFF;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        .burger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .burger.active span:nth-child(2) { opacity: 0; }
+        .burger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+
+        /* Mobile nav */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(15,15,15,0.98);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 2em;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+        .mobile-nav.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .mobile-nav a {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #FFF;
+            transition: color 0.3s;
+        }
+        .mobile-nav a:hover { color: #F0A500; }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('img/hero.jpg') center center / cover no-repeat;
+            filter: brightness(0.35);
+            transform: scale(1.05);
+            transition: transform 8s ease;
+        }
+        .hero:hover .hero-bg { transform: scale(1.1); }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                180deg,
+                rgba(26,26,26,0.6) 0%,
+                rgba(26,26,26,0.3) 40%,
+                rgba(26,26,26,0.7) 100%
+            );
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem 1rem;
+            max-width: 850px;
+        }
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5em 1.5em;
+            border: 1px solid rgba(240,165,0,0.4);
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #F0A500;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(4px);
+            background: rgba(240,165,0,0.08);
+        }
+        .hero h1 {
+            font-size: clamp(2.2rem, 7vw, 4.2rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 0.4em;
+            text-transform: uppercase;
+        }
+        .hero h1 .accent-line {
+            display: block;
+            color: #F0A500;
+        }
+        .hero-sub {
+            font-size: clamp(0.95rem, 2.5vw, 1.2rem);
+            color: #CCC;
+            margin-bottom: 2.5rem;
+            line-height: 1.5;
+            letter-spacing: 0.5px;
+        }
+        .hero-sub span { color: #F0A500; font-weight: 600; }
+        .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .hero-scroll {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            animation: scrollBounce 2s infinite;
+        }
+        .hero-scroll svg { width: 28px; height: 28px; color: #F0A500; }
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* ===== SERVICES ===== */
+        .services { padding: 6rem 0; background: #1A1A1A; }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .service-card {
+            background: linear-gradient(145deg, #222 0%, #1A1A1A 100%);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #2A2A2A;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #F0A500;
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(240,165,0,0.3);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        }
+        .service-card-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .service-card:hover .service-card-img { transform: scale(1.05); }
+        .service-card-img-wrap { overflow: hidden; }
+        .service-card-body { padding: 1.8rem; }
+        .service-card-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(240,165,0,0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        .service-card-icon svg { width: 26px; height: 26px; color: #F0A500; }
+        .service-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.7rem;
+            color: #FFF;
+        }
+        .service-card p {
+            color: #AAA;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* ===== ABOUT ===== */
+        .about { padding: 6rem 0; background: #151515; }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .about-images {
+            position: relative;
+        }
+        .about-img-main {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        .about-img-secondary {
+            position: absolute;
+            width: 55%;
+            bottom: -30px;
+            right: -20px;
+            border-radius: 12px;
+            border: 4px solid #1A1A1A;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+        }
+        .about-content h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 800;
+            margin-bottom: 0.3em;
+            text-transform: uppercase;
+        }
+        .about-content h2 span { color: #F0A500; }
+        .about-tagline {
+            color: #F0A500;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1.5rem;
+        }
+        .about-content p {
+            color: #BBB;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        .about-stats {
+            display: flex;
+            gap: 2.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        .stat { text-align: center; }
+        .stat-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #F0A500;
+            line-height: 1;
+        }
+        .stat-label {
+            font-size: 0.8rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.3em;
+        }
+
+        /* ===== GALLERY ===== */
+        .gallery { padding: 6rem 0; background: #1A1A1A; }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            cursor: pointer;
+            aspect-ratio: 4/3;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease, filter 0.4s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.1);
+            filter: brightness(0.7);
+        }
+        .gallery-item-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(240,165,0,0.0);
+            transition: background 0.4s ease;
+        }
+        .gallery-item:hover .gallery-item-overlay {
+            background: rgba(240,165,0,0.15);
+        }
+        .gallery-item-overlay svg {
+            width: 40px;
+            height: 40px;
+            color: #FFF;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.4s ease;
+        }
+        .gallery-item:hover .gallery-item-overlay svg {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            background: rgba(0,0,0,0.95);
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .lightbox.active { display: flex; opacity: 1; }
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 85vh;
+            border-radius: 8px;
+            box-shadow: 0 20px 80px rgba(0,0,0,0.8);
+            object-fit: contain;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 50px;
+            height: 50px;
+            background: rgba(240,165,0,0.15);
+            border: 1px solid rgba(240,165,0,0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .lightbox-close:hover { background: #F0A500; }
+        .lightbox-close svg { width: 24px; height: 24px; color: #FFF; }
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(240,165,0,0.15);
+            border: 1px solid rgba(240,165,0,0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .lightbox-nav:hover { background: #F0A500; }
+        .lightbox-nav svg { width: 24px; height: 24px; color: #FFF; }
+        .lightbox-prev { left: 1.5rem; }
+        .lightbox-next { right: 1.5rem; }
+
+        /* ===== CONTACT ===== */
+        .contact { padding: 6rem 0; background: #151515; }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        .contact-info { display: flex; flex-direction: column; gap: 2rem; }
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        .contact-icon {
+            width: 52px;
+            height: 52px;
+            min-width: 52px;
+            background: rgba(240,165,0,0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .contact-icon svg { width: 24px; height: 24px; color: #F0A500; }
+        .contact-item h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+        .contact-item p { color: #AAA; font-size: 0.95rem; line-height: 1.5; }
+        .contact-item a { color: #F0A500; transition: color 0.3s; }
+        .contact-item a:hover { color: #FFB800; }
+        .contact-map {
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #2A2A2A;
+            min-height: 350px;
+        }
+        .contact-map iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 350px;
+            border: 0;
+            filter: grayscale(0.6) brightness(0.8) contrast(1.1);
+            transition: filter 0.4s ease;
+        }
+        .contact-map:hover iframe { filter: grayscale(0) brightness(1) contrast(1); }
+
+        /* CTA Banner */
+        .cta-banner {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #F0A500 0%, #D49000 100%);
+            text-align: center;
+        }
+        .cta-banner h2 {
+            font-size: clamp(1.5rem, 4vw, 2.4rem);
+            font-weight: 800;
+            color: #1A1A1A;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+        .cta-banner p {
+            color: rgba(26,26,26,0.7);
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+        }
+        .cta-banner .btn {
+            background: #1A1A1A;
+            color: #F0A500;
+        }
+        .cta-banner .btn:hover {
+            background: #000;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            padding: 3rem 0 1.5rem;
+            background: #111;
+            border-top: 1px solid #222;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #222;
+            margin-bottom: 1.5rem;
+        }
+        .footer-brand p {
+            color: #777;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-top: 1rem;
+            max-width: 320px;
+        }
+        .footer h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #F0A500;
+            margin-bottom: 1.2rem;
+        }
+        .footer-links a {
+            display: block;
+            color: #888;
+            font-size: 0.9rem;
+            padding: 0.3em 0;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover { color: #F0A500; }
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6em;
+            color: #888;
+            font-size: 0.9rem;
+            padding: 0.3em 0;
+        }
+        .footer-contact-item svg { width: 16px; height: 16px; color: #F0A500; min-width: 16px; }
+        .footer-bottom {
+            text-align: center;
+            color: #555;
+            font-size: 0.8rem;
+        }
+
+        /* ===== MOBILE CLICK-TO-CALL FAB ===== */
+        .fab-call {
+            display: none;
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            width: 60px;
+            height: 60px;
+            background: #F0A500;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            z-index: 900;
+            box-shadow: 0 6px 25px rgba(240,165,0,0.4);
+            animation: fabPulse 2s infinite;
+            transition: transform 0.3s ease;
+        }
+        .fab-call:hover { transform: scale(1.1); }
+        .fab-call svg { width: 28px; height: 28px; color: #1A1A1A; }
+        @keyframes fabPulse {
+            0%, 100% { box-shadow: 0 6px 25px rgba(240,165,0,0.4); }
+            50% { box-shadow: 0 6px 40px rgba(240,165,0,0.7); }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .about-images { max-width: 500px; margin: 0 auto; }
+            .about-img-secondary { bottom: -20px; right: -10px; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links, .header-phone { display: none; }
+            .burger { display: flex; }
+            .mobile-nav { display: flex; }
+            .fab-call { display: flex; }
+            .hero h1 { font-size: clamp(1.8rem, 8vw, 2.8rem); }
+            .services-grid { grid-template-columns: 1fr; max-width: 450px; margin: 0 auto; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .about-stats { justify-content: center; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .section-title { font-size: clamp(1.5rem, 6vw, 2rem); }
+            .lightbox-prev { left: 0.5rem; }
+            .lightbox-next { right: 0.5rem; }
+            .lightbox-nav { width: 40px; height: 40px; }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+            .hero-badge { font-size: 0.65rem; letter-spacing: 2px; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .btn { width: 100%; max-width: 280px; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="header" id="header">
+    <div class="container">
+        <a href="#hero" class="logo">
+            <img src="img/logo.png" alt="Мегатранс Лого">
+            <div class="logo-text">
+                Мегатранс
+                <small>Автоморга Русе</small>
+            </div>
+        </a>
+        <nav class="nav-links">
+            <a href="#services">Услуги</a>
+            <a href="#about">За нас</a>
+            <a href="#gallery">Галерия</a>
+            <a href="#contact">Контакти</a>
+        </nav>
+        <a href="tel:0878101801" class="header-phone">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            0878 101 801
+        </a>
+        <button class="burger" id="burger" aria-label="Меню">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<!-- Mobile Nav -->
+<nav class="mobile-nav" id="mobileNav">
+    <a href="#services">Услуги</a>
+    <a href="#about">За нас</a>
+    <a href="#gallery">Галерия</a>
+    <a href="#contact">Контакти</a>
+    <a href="tel:0878101801" class="accent">0878 101 801</a>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div class="hero-badge">Автоморга в Русе от години</div>
+        <h1>
+            Автоморга
+            <span class="accent-line">Мегатранс — Русе</span>
+        </h1>
+        <p class="hero-sub">
+            Авточасти втора употреба <span>&bull;</span> Изкупуване на автомобили <span>&bull;</span> Продажба
+        </p>
+        <div class="hero-buttons">
+            <a href="tel:0878101801" class="btn btn-primary">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                Обадете се
+            </a>
+            <a href="#services" class="btn btn-outline">Вижте услугите</a>
+        </div>
+    </div>
+    <a href="#services" class="hero-scroll">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 13l5 5 5-5"/><path d="M7 6l5 5 5-5"/></svg>
+    </a>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="services" id="services">
+    <div class="container">
+        <p class="section-subtitle reveal" style="margin-bottom:0.5rem;color:#F0A500;font-family:'Montserrat',sans-serif;font-weight:600;font-size:0.8rem;text-transform:uppercase;letter-spacing:3px;">Какво предлагаме</p>
+        <h2 class="section-title reveal">Нашите <span>Услуги</span></h2>
+        <p class="section-subtitle reveal">Пълна гама от услуги за вашия автомобил — от части до изкупуване</p>
+        <div class="services-grid">
+            <!-- Card 1 -->
+            <div class="service-card reveal">
+                <div class="service-card-img-wrap">
+                    <img src="img/parts.jpg" alt="Авточасти втора употреба" class="service-card-img">
+                </div>
+                <div class="service-card-body">
+                    <div class="service-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                    </div>
+                    <h3>Авточасти втора употреба</h3>
+                    <p>Богато разнообразие от авточасти за масово използваните автомобили. Двигатели, ходова част, спирачна система, скоростни кутии и много други.</p>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="service-card reveal">
+                <div class="service-card-img-wrap">
+                    <img src="img/towing.jpg" alt="Изкупуване на автомобили" class="service-card-img">
+                </div>
+                <div class="service-card-body">
+                    <div class="service-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                    </div>
+                    <h3>Изкупуване на автомобили</h3>
+                    <p>Изкупуваме автомобили, камиони, бусове, автобуси и селскостопанска техника. Разполагаме с подемна техника и специализирано оборудване.</p>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="service-card reveal">
+                <div class="service-card-img-wrap">
+                    <img src="img/trucks.jpg" alt="Продажба на автомобили" class="service-card-img">
+                </div>
+                <div class="service-card-body">
+                    <div class="service-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    </div>
+                    <h3>Продажба на автомобили</h3>
+                    <p>Продажба на автомобили втора употреба — стари, ударени и повредени превозни средства на достъпни цени.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="about" id="about">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-images reveal-left">
+                <img src="img/about1.jpg" alt="Автоморга Мегатранс — двор" class="about-img-main">
+                <img src="img/about2.jpg" alt="Автоморга Мегатранс — двор 2" class="about-img-secondary">
+            </div>
+            <div class="about-content reveal-right">
+                <p class="about-tagline">За нас</p>
+                <h2>Утвърдена <span>автоморга</span> в Русе</h2>
+                <p>Автоморга Мегатранс е утвърдена фирма в Русе за авточасти втора употреба и изкупуване на автомобили за скрап. Фирмата разполага с богато разнообразие авточасти на склад и складова база от над 5000 кв.м.</p>
+                <p>Работим с клиенти от цяла Северна България и предлагаме коректно обслужване, бързо обработване на заявки и конкурентни цени.</p>
+                <div class="about-stats">
+                    <div class="stat">
+                        <div class="stat-number">5000+</div>
+                        <div class="stat-label">кв.м. площ</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">1000+</div>
+                        <div class="stat-label">налични части</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">години опит</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section class="gallery" id="gallery">
+    <div class="container">
+        <p class="section-subtitle reveal" style="margin-bottom:0.5rem;color:#F0A500;font-family:'Montserrat',sans-serif;font-weight:600;font-size:0.8rem;text-transform:uppercase;letter-spacing:3px;">Нашата база</p>
+        <h2 class="section-title reveal">Галерия <span>снимки</span></h2>
+        <p class="section-subtitle reveal">Разгледайте нашата складова база и оборудване</p>
+        <div class="gallery-grid">
+            <div class="gallery-item reveal" data-index="0">
+                <img src="img/hero.jpg" alt="Стелажи с автомобили">
+                <div class="gallery-item-overlay">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                </div>
+            </div>
+            <div class="gallery-item reveal" data-index="1">
+                <img src="img/yard.jpg" alt="Двор с автомобили">
+                <div class="gallery-item-overlay">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                </div>
+            </div>
+            <div class="gallery-item reveal" data-index="2">
+                <img src="img/towing.jpg" alt="Репатрак">
+                <div class="gallery-item-overlay">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                </div>
+            </div>
+            <div class="gallery-item reveal" data-index="3">
+                <img src="img/parts.jpg" alt="Авточасти">
+                <div class="gallery-item-overlay">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                </div>
+            </div>
+            <div class="gallery-item reveal" data-index="4">
+                <img src="img/trucks.jpg" alt="Камиони">
+                <div class="gallery-item-overlay">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                </div>
+            </div>
+            <div class="gallery-item reveal" data-index="5">
+                <img src="img/about2.jpg" alt="Складова база">
+                <div class="gallery-item-overlay">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CTA BANNER ===== -->
+<section class="cta-banner">
+    <div class="container reveal">
+        <h2>Нуждаете се от авточасти?</h2>
+        <p>Свържете се с нас за бърза консултация и оферта</p>
+        <a href="tel:0878101801" class="btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Обадете се сега
+        </a>
+    </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="contact" id="contact">
+    <div class="container">
+        <p class="section-subtitle reveal" style="margin-bottom:0.5rem;color:#F0A500;font-family:'Montserrat',sans-serif;font-weight:600;font-size:0.8rem;text-transform:uppercase;letter-spacing:3px;">Свържете се с нас</p>
+        <h2 class="section-title reveal">Контакти</h2>
+        <p class="section-subtitle reveal">Елате на място или се обадете — ще ви помогнем</p>
+        <div class="contact-grid">
+            <div class="contact-info reveal-left">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <div>
+                        <h4>Адрес</h4>
+                        <p>ул. Тулча 15 (товарна гара), гр. Русе</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </div>
+                    <div>
+                        <h4>Телефон</h4>
+                        <p><a href="tel:0878101801">0878 101 801</a></p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <div>
+                        <h4>Имейл</h4>
+                        <p><a href="mailto:panaka.gs@gmail.com">panaka.gs@gmail.com</a></p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <div>
+                        <h4>Работно време</h4>
+                        <p>Понеделник — Събота: 08:00 — 18:00</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-map reveal-right">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2848.5!2d25.9714!3d43.8356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40ae60a4a3a3a3a3%3A0x0!2z0YPQuy4g0KLRg9C70YfQsCAxNSwg0KDRg9GB0LU!5e0!3m2!1sbg!2sbg!4v1700000000000!5m2!1sbg!2sbg" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#hero" class="logo">
+                    <img src="img/logo.png" alt="Мегатранс Лого" style="height:42px">
+                </a>
+                <p>Автоморга Мегатранс е утвърдена фирма в Русе за авточасти втора употреба и изкупуване на автомобили за скрап. Работим за вашето удобство.</p>
+            </div>
+            <div>
+                <h4>Навигация</h4>
+                <div class="footer-links">
+                    <a href="#hero">Начало</a>
+                    <a href="#services">Услуги</a>
+                    <a href="#about">За нас</a>
+                    <a href="#gallery">Галерия</a>
+                    <a href="#contact">Контакти</a>
+                </div>
+            </div>
+            <div>
+                <h4>Контакти</h4>
+                <div class="footer-contact-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    ул. Тулча 15, Русе
+                </div>
+                <div class="footer-contact-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <a href="tel:0878101801" style="color:#AAA">0878 101 801</a>
+                </div>
+                <div class="footer-contact-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <a href="mailto:panaka.gs@gmail.com" style="color:#AAA">panaka.gs@gmail.com</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 Автоморга Мегатранс — Русе. Всички права запазени.
+        </div>
+    </div>
+</footer>
+
+<!-- ===== FAB CALL BUTTON (mobile) ===== -->
+<a href="tel:0878101801" class="fab-call" aria-label="Обадете се">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+</a>
+
+<!-- ===== LIGHTBOX ===== -->
+<div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Затвори">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Предишна">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <img src="" alt="" id="lightboxImg">
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Следваща">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+</div>
+
+<script>
+(function() {
+    'use strict';
+
+    // ===== HEADER SCROLL =====
+    const header = document.getElementById('header');
+    let lastScroll = 0;
+    window.addEventListener('scroll', function() {
+        const scrollY = window.scrollY;
+        if (scrollY > 60) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+        lastScroll = scrollY;
+    }, { passive: true });
+
+    // ===== MOBILE MENU =====
+    const burger = document.getElementById('burger');
+    const mobileNav = document.getElementById('mobileNav');
+    burger.addEventListener('click', function() {
+        burger.classList.toggle('active');
+        mobileNav.classList.toggle('open');
+        document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+    });
+    mobileNav.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+            burger.classList.remove('active');
+            mobileNav.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+    });
+
+    // ===== SCROLL REVEAL =====
+    const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const revealObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    revealElements.forEach(function(el) { revealObserver.observe(el); });
+
+    // ===== LIGHTBOX =====
+    const galleryImages = [
+        'img/hero.jpg', 'img/yard.jpg', 'img/towing.jpg',
+        'img/parts.jpg', 'img/trucks.jpg', 'img/about2.jpg'
+    ];
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    let currentIndex = 0;
+
+    document.querySelectorAll('.gallery-item').forEach(function(item) {
+        item.addEventListener('click', function() {
+            currentIndex = parseInt(this.dataset.index);
+            lightboxImg.src = galleryImages[currentIndex];
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) closeLightbox();
+    });
+
+    document.getElementById('lightboxPrev').addEventListener('click', function(e) {
+        e.stopPropagation();
+        currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+        lightboxImg.src = galleryImages[currentIndex];
+    });
+    document.getElementById('lightboxNext').addEventListener('click', function(e) {
+        e.stopPropagation();
+        currentIndex = (currentIndex + 1) % galleryImages.length;
+        lightboxImg.src = galleryImages[currentIndex];
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (!lightbox.classList.contains('active')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') {
+            currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+            lightboxImg.src = galleryImages[currentIndex];
+        }
+        if (e.key === 'ArrowRight') {
+            currentIndex = (currentIndex + 1) % galleryImages.length;
+            lightboxImg.src = galleryImages[currentIndex];
+        }
+    });
+
+    // ===== SMOOTH SCROLL (fallback) =====
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+})();
+</script>
+
+</body>
+</html>
