@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://koiopenclaw-max.github.io/megatrans-ruse/sitemap.xml
