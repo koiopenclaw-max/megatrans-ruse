@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: http://demo47.add.bg/sitemap.xml
+Sitemap: https://demo47.add.bg/sitemap.xml
